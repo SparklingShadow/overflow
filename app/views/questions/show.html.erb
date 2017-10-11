@@ -1,0 +1,30 @@
+<div>
+  Title:<br>
+  <%= @question.title%><br>
+  Question:<br>
+  <%= @question.content%><br><br>
+
+  <a href="/questions/<%=@question.id%>/edit"><h1>Edit</h1></a>
+  
+  
+  
+  <form action="/questions/:id" method="PUT">
+    <input  type="hidden" name="method" value="DELETE">
+    <input type="submit" value="Delete Question">
+  </form>
+
+  <% @answers.each do |answer| %>
+    <% if answer.question_id == @question.id %>
+      Title:<br>
+      <%= answer.title%><br>
+      Answer:<br>
+      <%= answer.content%>
+    <%end%>
+  <%end%>  
+  
+  <form>
+    <input type="text" name="title" placeholder="Title"><br>
+    <input type="text" name="content" placeholder="Answer">
+    <input type="submit" name="submit">
+  </form>
+</div>
